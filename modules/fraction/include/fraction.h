@@ -44,7 +44,7 @@ class Fraction {
 
     int changeDenominator(const int& den);
 
-    void increaseByWhole(int n); 
+    void increaseByWhole(int n);
 };
 
 int nod(int a, int b);
