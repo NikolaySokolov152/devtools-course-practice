@@ -12,10 +12,10 @@ class Fraction {
     explicit Fraction(const int& nom = 0, const int& den = 1);
     Fraction(const Fraction& f);
 
-    int getNominator() const;
+    int getNuminator() const;
     int getDenominator() const;
 
-    void setNominator(const int& nom);
+    void setNuminator(const int& nom);
     void setDenominator(const int& den);
 
     bool operator ==(const Fraction& f) const;

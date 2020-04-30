@@ -10,10 +10,12 @@ CMakeFiles/
 gtest.dir/
 RUN_TESTS*
 Debug/
+CMakeCache.txt
 
 *.user
 *vcxproj.filters
 
+*.dir/
 .DS_Store
 *.log
 *.*~

@@ -15,7 +15,7 @@ TEST_F(FractionTest, Can_Create_Fraction_With_Default_constructor) {
     Fraction f;
 
     // Assert
-    EXPECT_EQ(0, f.getNominator());
+    EXPECT_EQ(0, f.getNuminator());
     EXPECT_ANY_THROW(f.getDenominator());
 }
 
@@ -25,7 +25,7 @@ TEST_F(FractionTest, Can_Create_Fraction_With_One_Parameter_constructor) {
     Fraction f(2);
 
     // Assert
-    EXPECT_EQ(2, f.getNominator());
+    EXPECT_EQ(2, f.getNuminator());
     EXPECT_EQ(1, f.getDenominator());
 }
 
@@ -35,7 +35,7 @@ TEST_F(FractionTest, Can_Create_Fraction_With_Two_Parameter_constructor) {
     Fraction f(1, 2);
 
     // Assert
-    EXPECT_EQ(1, f.getNominator());
+    EXPECT_EQ(1, f.getNuminator());
     EXPECT_EQ(2, f.getDenominator());
 }
 
@@ -66,7 +66,7 @@ TEST_F(FractionTest, Equals_Fractions_Is_Equals) {
     Fraction f2;
 
     // Act
-    f2.setNominator(30);
+    f2.setNuminator(30);
     f2.setDenominator(60);
 
     // Assert
@@ -132,7 +132,7 @@ TEST_F(FractionTest, Correct_Fraction_Reduction) {
     f.fractionReduction();
 
     // Assert
-    EXPECT_EQ(f.getNominator(), 1);
+    EXPECT_EQ(f.getNuminator(), 1);
     EXPECT_EQ(f.getDenominator(), 2);
 }
 
@@ -145,7 +145,7 @@ TEST_F(FractionTest, Addition_Fractions_Test) {
     Fraction f3 = f1 + f2;
 
     // Assert
-    EXPECT_EQ(f3.getNominator(), 2);
+    EXPECT_EQ(f3.getNuminator(), 2);
     EXPECT_EQ(f3.getDenominator(), 3);
 }
 
@@ -158,7 +158,7 @@ TEST_F(FractionTest, Subtraction_Fractions_Test) {
     Fraction f3 = f1 - f2;
 
     // Assert
-    EXPECT_EQ(f3.getNominator(), -8);
+    EXPECT_EQ(f3.getNuminator(), -8);
     EXPECT_EQ(f3.getDenominator(), 15);
 }
 
@@ -171,7 +171,7 @@ TEST_F(FractionTest, Multiplication_Fractions_Test) {
     Fraction f3 = f1 * f2;
 
     // Assert
-    EXPECT_EQ(f3.getNominator(), 1);
+    EXPECT_EQ(f3.getNuminator(), 1);
     EXPECT_EQ(f3.getDenominator(), 25);
 }
 
@@ -184,7 +184,7 @@ TEST_F(FractionTest, Division_Fractions_Test) {
     Fraction f3 = f1 / f2;
 
     // Assert
-    EXPECT_EQ(f3.getNominator(), 1);
+    EXPECT_EQ(f3.getNuminator(), 1);
     EXPECT_EQ(f3.getDenominator(), 9);
 }
 
@@ -440,7 +440,7 @@ TEST(Add_test, Get_Nom_Reduction) {
     f1.fractionReduction();
 
     // Assert
-    EXPECT_EQ(f1.getNominator(), 1);
+    EXPECT_EQ(f1.getNuminator(), 1);
 }
 
 TEST(Add_test, Get_Det_Reduction) {
@@ -470,25 +470,14 @@ TEST(Add_test, Get_Nom_Increase) {
     // Act
     f1.increaseByWhole(5);
     // Assert
-    EXPECT_EQ(f1.getNominator(), 10);
+    EXPECT_EQ(f1.getNuminator(), 10);
 }
 
-TEST(Add_test, Increase_Exeption_Nom) {
+TEST(Add_test, Increase_Exeption_Zero) {
     // Arrange
     Fraction f1(1, 2);
 
     // Act
-    f1.increaseByWhole(0);
     // Assert
-    EXPECT_EQ(f1.getNominator(), 1);
-}
-
-TEST(Add_test, Increase_Exeption_Den) {
-    // Arrange
-    Fraction f1(1, 2);
-
-    // Act
-    f1.increaseByWhole(0);
-    // Assert
-    EXPECT_EQ(f1.getDenominator(), 2);
+    EXPECT_ANY_THROW(f1.increaseByWhole(0));
 }

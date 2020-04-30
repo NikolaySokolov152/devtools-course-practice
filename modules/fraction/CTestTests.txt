@@ -17,7 +17,7 @@ add_test(
 )
 
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is a complex number calculator"
+    PASS_REGULAR_EXPRESSION "This is a fraction calculator"
     LABELS "${MODULE}")
 
 add_test(
@@ -25,7 +25,7 @@ add_test(
     COMMAND ${APPLICATION} 1 2
 )
 set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
-    PASS_REGULAR_EXPRESSION "ERROR: Should be 5 arguments."
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 3,4 or 5 arguments."
     LABELS "${MODULE}")
 
 add_test(
@@ -45,41 +45,42 @@ set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Add_Complexs
-    COMMAND ${APPLICATION} 2.5 4.5 1.0 4.5 +
+    NAME ${prefix}_can_Diff_Fractions
+    COMMAND ${APPLICATION} -17 1 15 5 -
 )
-set_tests_properties (${prefix}_can_Add_Complexs PROPERTIES
-    PASS_REGULAR_EXPRESSION "Real = 3.5 Imaginary = 9"
+set_tests_properties (${prefix}_can_Diff_Fractions PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numirator = -20 Denominator = 1"
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Diff_Complexs
-    COMMAND ${APPLICATION} -17 0 15 -3.5 -
+    NAME ${prefix}_can_Mult_Fractions
+    COMMAND ${APPLICATION} 13 -2 3 4 *
 )
-set_tests_properties (${prefix}_can_Diff_Complexs PROPERTIES
-    PASS_REGULAR_EXPRESSION "Real = -32 Imaginary = 3.5"
+set_tests_properties (${prefix}_can_Mult_Fractions PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numirator = -39 Denominator = 8"
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Mult_Complexs
-    COMMAND ${APPLICATION} 13 -2 4.6 7.3 *
+    NAME ${prefix}_can_Divide_Fractions
+    COMMAND ${APPLICATION} 3 4 15 20 /
 )
-set_tests_properties (${prefix}_can_Mult_Complexs PROPERTIES
-    PASS_REGULAR_EXPRESSION "Real = 74.4 Imaginary = 85.7"
+set_tests_properties (${prefix}_can_Divide_Fractions PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numirator = 1 Denominator = 1"
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Divide_Complexs
-    COMMAND ${APPLICATION} 27 30 15 20 /
-)
-set_tests_properties (${prefix}_can_Divide_Complexs PROPERTIES
-    PASS_REGULAR_EXPRESSION "Real = 1.608 Imaginary = -0.144"
-    LABELS "${MODULE}")
-
-add_test(
-    NAME ${prefix}_can_Detect_Divide_By_Zero
+    NAME ${prefix}_can_Detect_Divide_By_Zero_Denominator 
     COMMAND ${APPLICATION} 27 30 0 0 /
 )
-set_tests_properties (${prefix}_can_Detect_Divide_By_Zero PROPERTIES
-    PASS_REGULAR_EXPRESSION "Can't divide by zero"
+set_tests_properties (${prefix}_can_Detect_Divide_By_Zero_Denominator PROPERTIES
+    PASS_REGULAR_EXPRESSION "Denominator can`t be zero. Use denominator = 1"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Divide_By_Zero_Numinator 
+    COMMAND ${APPLICATION} 27 30 0 3 /
+)
+set_tests_properties (${prefix}_can_Detect_Divide_By_Zero_Numinator PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numerator divider can`t be zero"
+    LABELS "${MODULE}")
+
