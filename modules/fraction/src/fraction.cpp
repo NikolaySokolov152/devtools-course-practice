@@ -122,7 +122,9 @@ Fraction Fraction::operator/(const Fraction & f) const {
         division.fractionReduction();
 
         return division;
-    } else throw std::string("Numerator divider can`t be zero");
+    } else {
+        throw std::string("Numerator divider can`t be zero");
+    }
     return Fraction();
 }
 
@@ -219,13 +221,13 @@ int Fraction::changeDenominator(const int & den) {
     return 0;
 }
 
-void Fraction::increaseByWhole(int n)
-{
-    if (n != 0)
-    {
+void Fraction::increaseByWhole(int n) {
+    if (n != 0) {
         nominator_ *= n;
         denominator_ *= n;
-    } else throw std::string("Argument is Zero");
+    } else {
+        throw std::string("Argument is Zero");
+    }
 }
 
 int nod(int a, int b) {
