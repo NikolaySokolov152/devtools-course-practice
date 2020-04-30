@@ -41,7 +41,7 @@ bool FractionCalculator::validateNumberOfArguments(int argc,
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }else if (argc != 4 && (argc != 6 && argc != 5)) {
+    } else if (argc != 4 && (argc != 6 && argc != 5)) {
         help(argv[0], "ERROR: Should be 3,4 or 5 arguments.\n\n");
         return false;
     }
@@ -61,6 +61,7 @@ int parseInt(const char* arg) {
 
 char parseOperation(int argc, const char* arg) {
     char op;
+
     //'+', '-', '*', '/', '=', '>', '<'
     if (argc == 6) {      
         if (strcmp(arg, "+") == 0) {
@@ -80,6 +81,7 @@ char parseOperation(int argc, const char* arg) {
         } else {
             throw std::string("Wrong operation format!");
         }
+
         //'+', '-', '*', '/', 'i', '=', '>', '<'
     } else if (argc == 5) {                      
         if (strcmp(arg, "+") == 0) {
@@ -101,6 +103,7 @@ char parseOperation(int argc, const char* arg) {
         } else {
             throw std::string("Wrong operation format!");
         }
+
         // 'd', 'r' '=', '>', '<'
     } else {
         if (strcmp(arg, "d") == 0) {     
@@ -173,8 +176,8 @@ std::string FractionCalculator::operator()(int argc, const char** argv) {
     bool res;
     std::ostringstream stream;
 
-    if (argc == 6) //'+', '-', '*', '/', '=', '>', '<'
-    {
+	//'+', '-', '*', '/', '=', '>', '<'
+    if (argc == 6) {
         switch (args.operation) {
         case '+':
             f = f1 + f2;
@@ -223,9 +226,9 @@ std::string FractionCalculator::operator()(int argc, const char** argv) {
                 stream << "False";
             break;
         }
-    }
-    else if (argc == 5)  //'+', '-', '*', '/', 'i', '=', '>', '<'
-    {
+
+        //'+', '-', '*', '/', 'i', '=', '>', '<'
+    } else if (argc == 5) {
         switch (args.operation) {
         case '+':
             f = f1 + args.f2_nom;
@@ -284,9 +287,9 @@ std::string FractionCalculator::operator()(int argc, const char** argv) {
                 stream << "False";
             break;
         }
-    }
-    else if (argc == 4)  // 'd', 'r', '=', '>', '<'
-    {
+
+		// 'd', 'r', '=', '>', '<'
+    } else if (argc == 4) {
         switch (args.operation) {
         case 'r':
             f1.fractionReduction();

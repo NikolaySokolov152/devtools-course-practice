@@ -114,19 +114,16 @@ Fraction Fraction::operator*(const Fraction & f) const {
 }
 
 Fraction Fraction::operator/(const Fraction & f) const {
-	int _t = f.getNuminator();
-	if (_t != 0)
-	{
-		int nom = this->getNuminator() * f.getDenominator();
-		int den = this->getDenominator() * f.getNuminator();
+    if (f.getNuminator() != 0) {
+        int nom = this->getNuminator() * f.getDenominator();
+        int den = this->getDenominator() * f.getNuminator();
 
-		Fraction division(nom, den);
-		division.fractionReduction();
+        Fraction division(nom, den);
+        division.fractionReduction();
 
-		return division;
-	}
-	else throw std::string("Numerator divider can`t be zero");
-	return Fraction();
+        return division;
+    } else throw std::string("Numerator divider can`t be zero");
+    return Fraction();
 }
 
 Fraction Fraction::operator+(const int & n) const {
@@ -157,17 +154,16 @@ Fraction Fraction::operator*(const int & n) const {
 }
 
 Fraction Fraction::operator/(const int & n) const {
-	if (n != 0)
-	{
-		int den = this->getDenominator() * n;
+    if (n != 0) {
+        int den = this->getDenominator() * n;
 
-		Fraction division(this->getNuminator(), den);
-		division.fractionReduction();
+        Fraction division(this->getNuminator(), den);
+        division.fractionReduction();
 
-		return division;
-	}
-	else throw std::string("Denominator can`t be zero");
-	return Fraction();
+        return division;
+    }
+    else throw std::string("Denominator can`t be zero");
+    return Fraction();
 }
 
 Fraction& Fraction::operator=(const Fraction & f) {
@@ -229,8 +225,7 @@ void Fraction::increaseByWhole(int n)
     {
         nominator_ *= n;
         denominator_ *= n;
-    }
-	else throw std::string("Argument is Zero");
+    } else throw std::string("Argument is Zero");
 }
 
 int nod(int a, int b) {
