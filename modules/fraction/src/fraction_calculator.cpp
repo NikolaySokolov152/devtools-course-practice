@@ -63,7 +63,7 @@ char parseOperation(int argc, const char* arg) {
     char op;
 
     //'+', '-', '*', '/', '=', '>', '<'
-    if (argc == 6) {      
+    if (argc == 6) {
         if (strcmp(arg, "+") == 0) {
             op = '+';
         } else if (strcmp(arg, "-") == 0) {
@@ -82,7 +82,7 @@ char parseOperation(int argc, const char* arg) {
             throw std::string("Wrong operation format!");
         }
         //'+', '-', '*', '/', 'i', '=', '>', '<'
-    } else if (argc == 5) {                      
+    } else if (argc == 5) {
         if (strcmp(arg, "+") == 0) {
             op = '+';
         } else if (strcmp(arg, "-") == 0) {
@@ -104,7 +104,7 @@ char parseOperation(int argc, const char* arg) {
         }
         // 'd', 'r' '=', '>', '<'
     } else {
-        if (strcmp(arg, "d") == 0) {     
+        if (strcmp(arg, "d") == 0) {
             op = 'd';
         } else if (strcmp(arg, "r") == 0) {
             op = 'r';
@@ -118,7 +118,6 @@ char parseOperation(int argc, const char* arg) {
             throw std::string("Wrong operation format!");
         }
     }
-    
     return op;
 }
 
@@ -174,7 +173,7 @@ std::string FractionCalculator::operator()(int argc, const char** argv) {
     bool res;
     std::ostringstream stream;
 
-	//'+', '-', '*', '/', '=', '>', '<'
+    //'+', '-', '*', '/', '=', '>', '<'
     if (argc == 6) {
         switch (args.operation) {
         case '+':
@@ -284,7 +283,7 @@ std::string FractionCalculator::operator()(int argc, const char** argv) {
                 stream << "False";
             break;
         }
-		// 'd', 'r', '=', '>', '<'
+        // 'd', 'r', '=', '>', '<'
     } else if (argc == 4) {
         switch (args.operation) {
         case 'r':

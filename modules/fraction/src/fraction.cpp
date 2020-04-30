@@ -163,8 +163,9 @@ Fraction Fraction::operator/(const int & n) const {
         division.fractionReduction();
 
         return division;
+    } else {
+        throw std::string("Denominator can`t be zero");
     }
-    else throw std::string("Denominator can`t be zero");
     return Fraction();
 }
 
