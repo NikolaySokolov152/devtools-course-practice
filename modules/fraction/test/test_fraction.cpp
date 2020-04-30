@@ -429,7 +429,6 @@ TEST(Add_test, Still_Add_Operation) {
     // Assert
     EXPECT_EQ(f3.getDenominator(), 1);
     EXPECT_EQ(f3.getDenominator(), 1);
-
 }
 
 TEST(Add_test, Get_Nom_Reduction) {
