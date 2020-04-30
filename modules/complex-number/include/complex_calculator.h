@@ -24,4 +24,3 @@ class ComplexCalculator {
 };
 
 #endif  // MODULES_COMPLEX_NUMBER_INCLUDE_COMPLEX_CALCULATOR_H_
-	
