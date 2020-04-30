@@ -15,9 +15,16 @@ add_test(
     NAME ${prefix}_can_Print_Help_Without_Arguments
     COMMAND ${APPLICATION}
 )
-
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
     PASS_REGULAR_EXPRESSION "This is a fraction calculator"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Operation_Format_Without_Arg
+    COMMAND ${APPLICATION} 27 30 i
+)
+set_tests_properties (${prefix}_can_Detect_Divide_By_Zero_Numinator PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong operation format!"
     LABELS "${MODULE}")
 
 add_test(
@@ -45,6 +52,14 @@ set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
+    NAME ${prefix}_can_Add_Fractions
+    COMMAND ${APPLICATION} 1 1 2 3 +
+)
+set_tests_properties (${prefix}_can_Add_Fractions PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numirator = 5 Denominator = 3"
+    LABELS "${MODULE}")
+
+add_test(
     NAME ${prefix}_can_Diff_Fractions
     COMMAND ${APPLICATION} -17 1 15 5 -
 )
@@ -69,7 +84,7 @@ set_tests_properties (${prefix}_can_Divide_Fractions PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Detect_Divide_By_Zero_Denominator 
+    NAME ${prefix}_can_Detect_Divide_By_Zero_Denominator
     COMMAND ${APPLICATION} 27 30 0 0 /
 )
 set_tests_properties (${prefix}_can_Detect_Divide_By_Zero_Denominator PROPERTIES
@@ -77,10 +92,145 @@ set_tests_properties (${prefix}_can_Detect_Divide_By_Zero_Denominator PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Detect_Divide_By_Zero_Numinator 
+    NAME ${prefix}_can_Detect_Divide_By_Zero_Numinator
     COMMAND ${APPLICATION} 27 30 0 3 /
 )
 set_tests_properties (${prefix}_can_Detect_Divide_By_Zero_Numinator PROPERTIES
     PASS_REGULAR_EXPRESSION "Numerator divider can`t be zero"
     LABELS "${MODULE}")
 
+add_test(
+    NAME ${prefix}_can_Add_Fraction_Whit_Number
+    COMMAND ${APPLICATION} 1 4 2 +
+)
+set_tests_properties (${prefix}_can_Add_Fraction_Whit_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numirator = 9 Denominator = 4"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Diff_Fraction_Whit_Number
+    COMMAND ${APPLICATION} 17 3 4 -
+)
+set_tests_properties (${prefix}_can_Diff_Fraction_Whit_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numirator = 5 Denominator = 3"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Mult_Fraction_Whit_Number
+    COMMAND ${APPLICATION} 13 -2 4 *
+)
+set_tests_properties (${prefix}_can_Mult_Fraction_Whit_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numirator = -26 Denominator = 1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Divide_Fraction_Whit_Number
+    COMMAND ${APPLICATION} 3 4 15 /
+)
+set_tests_properties (${prefix}_can_Divide_Fraction_Whit_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numirator = 1 Denominator = 20"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Divide_By_Zero_Number
+    COMMAND ${APPLICATION} 27 30 0 /
+)
+set_tests_properties (${prefix}_can_Detect_Divide_By_Zero_Numinator PROPERTIES
+    PASS_REGULAR_EXPRESSION "Denominator can`t be zero"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Reduction_Fraction
+    COMMAND ${APPLICATION} 27 30 r
+)
+set_tests_properties (${prefix}_can_Reduction_Fraction PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numirator = 7 Denominator = 10"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Into_Double
+    COMMAND ${APPLICATION} 1 4 d
+)
+set_tests_properties (${prefix}_can_Into_Double PROPERTIES
+    PASS_REGULAR_EXPRESSION "Double fraction = 0.25"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Increase_Fraction
+    COMMAND ${APPLICATION} 1 5 3 i
+)
+set_tests_properties (${prefix}_can_Increase_Fraction PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numirator = 3 Denominator = 15"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Compare_More_Fractions
+    COMMAND ${APPLICATION} 3 4 2 3 <
+)
+set_tests_properties (${prefix}_can_Compare_More_Fractions PROPERTIES
+    PASS_REGULAR_EXPRESSION "False"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Compare_Less_Fractions
+    COMMAND ${APPLICATION} 3 4 2 3 >
+)
+set_tests_properties (${prefix}_can_Compare_Less_Fractions PROPERTIES
+    PASS_REGULAR_EXPRESSION "True"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Compare_Equally_Fractions
+    COMMAND ${APPLICATION} 3321 1107 6 2 =
+)
+set_tests_properties (${prefix}_can_Compare_Equally_Fractions PROPERTIES
+    PASS_REGULAR_EXPRESSION "True"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Compare_More_Fraction_Whis_Number
+    COMMAND ${APPLICATION} 5 4 1 <
+)
+set_tests_properties (${prefix}_can_Compare_More_Fraction_Whis_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "False"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Compare_Less_Fractions_Whis_Number
+    COMMAND ${APPLICATION} 10 4 2 >
+)
+set_tests_properties (${prefix}_can_Compare_Less_Fractions_Whis_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "True"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Compare_Equally_Fractions_Whis_Number
+    COMMAND ${APPLICATION} 3321 1107 3 =
+)
+set_tests_properties (${prefix}_can_Compare_Equally_Fractions_Whis_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "True"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Compare_More_In_Fraction
+    COMMAND ${APPLICATION} 5 4 <
+)
+set_tests_properties (${prefix}_can_Compare_More_In_Fraction PROPERTIES
+    PASS_REGULAR_EXPRESSION "Denominator is not greater than Numerator"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Compare_Less_In_Fraction
+    COMMAND ${APPLICATION} 10 4 >
+)
+set_tests_properties (${prefix}_can_Compare_Less_In_Fraction PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numerator is greater than Denominator"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Compare_Equally_In_Fraction
+    COMMAND ${APPLICATION} 110 10 =
+)
+set_tests_properties (${prefix}_can_Compare_Equally_In_Fraction PROPERTIES
+    PASS_REGULAR_EXPRESSION "Numerator is not equal to Denominator"
+    LABELS "${MODULE}")
