@@ -23,7 +23,7 @@ add_test(
     NAME ${prefix}_can_Detect_Wrong_Operation_Format_Without_Arg
     COMMAND ${APPLICATION} 27 30 i
 )
-set_tests_properties (${prefix}_can_Detect_Divide_By_Zero_Numinator PROPERTIES
+set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format_Without_Arg PROPERTIES
     PASS_REGULAR_EXPRESSION "Wrong operation format!"
     LABELS "${MODULE}")
 
@@ -135,7 +135,7 @@ add_test(
     NAME ${prefix}_can_Detect_Divide_By_Zero_Number
     COMMAND ${APPLICATION} 27 30 0 /
 )
-set_tests_properties (${prefix}_can_Detect_Divide_By_Zero_Numinator PROPERTIES
+set_tests_properties (${prefix}_can_Detect_Divide_By_Zero_Number PROPERTIES
     PASS_REGULAR_EXPRESSION "Denominator can`t be zero"
     LABELS "${MODULE}")
 
@@ -144,7 +144,7 @@ add_test(
     COMMAND ${APPLICATION} 27 30 r
 )
 set_tests_properties (${prefix}_can_Reduction_Fraction PROPERTIES
-    PASS_REGULAR_EXPRESSION "Numirator = 7 Denominator = 10"
+    PASS_REGULAR_EXPRESSION "Numirator = 9 Denominator = 10"
     LABELS "${MODULE}")
 
 add_test(
