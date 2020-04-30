@@ -25,7 +25,8 @@ void FractionCalculator::help(const char* appname, const char* message) {
         "Where all arguments are double-precision numbers, " +
         "and <operation> is one of '+', '-', '*', '/', 'i', '=', '>', '<'.\n"
         "or\n\n" +
-        "  $ " + appname + " <f1_nom> <f1_den> " + "<f2_nom> <f2_den> <operation>\n\n" +
+        "  $ " + appname + " <f1_nom> <f1_den> "
+        + "<f2_nom> <f2_den> <operation>\n\n" +
         "Where all arguments are double-precision numbers, " +
         "and <operation> is one of '+', '-', '*', '/', '=', '>', '<'.\n\n" +
 
@@ -35,12 +36,12 @@ void FractionCalculator::help(const char* appname, const char* message) {
         "'i' = increase in the numerator and denominator n times\n";
 }
 
-bool FractionCalculator::validateNumberOfArguments(int argc, const char** argv) {
+bool FractionCalculator::validateNumberOfArguments(int argc,
+    const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 4 && (argc != 6 && argc != 5)) {
+    }else if (argc != 4 && (argc != 6 && argc != 5)) {
         help(argv[0], "ERROR: Should be 3,4 or 5 arguments.\n\n");
         return false;
     }
@@ -60,78 +61,59 @@ int parseInt(const char* arg) {
 
 char parseOperation(int argc, const char* arg) {
     char op;
-    if (argc == 6) {                               //'+', '-', '*', '/', '=', '>', '<'
+    //'+', '-', '*', '/', '=', '>', '<'
+    if (argc == 6) {      
         if (strcmp(arg, "+") == 0) {
             op = '+';
-        }
-        else if (strcmp(arg, "-") == 0) {
+        } else if (strcmp(arg, "-") == 0) {
             op = '-';
-        }
-        else if (strcmp(arg, "*") == 0) {
+        } else if (strcmp(arg, "*") == 0) {
             op = '*';
-        }
-        else if (strcmp(arg, "/") == 0) {
+        } else if (strcmp(arg, "/") == 0) {
             op = '/';
-        }
-        else if (strcmp(arg, "=") == 0) {
+        } else if (strcmp(arg, "=") == 0) {
             op = '=';
-        }
-        else if (strcmp(arg, "<") == 0) {
+        } else if (strcmp(arg, "<") == 0) {
             op = '<';
-        }
-        else if (strcmp(arg, ">") == 0) {
+        } else if (strcmp(arg, ">") == 0) {
             op = '>';
-        }
-        else {
+        } else {
             throw std::string("Wrong operation format!");
         }
-    }
-    else if (argc == 5) {                      //'+', '-', '*', '/', 'i', '=', '>', '<'
+        //'+', '-', '*', '/', 'i', '=', '>', '<'
+    } else if (argc == 5) {                      
         if (strcmp(arg, "+") == 0) {
             op = '+';
-        }
-        else if (strcmp(arg, "-") == 0) {
+        } else if (strcmp(arg, "-") == 0) {
             op = '-';
-        }
-        else if (strcmp(arg, "*") == 0) {
+        } else if (strcmp(arg, "*") == 0) {
             op = '*';
-        }
-        else if (strcmp(arg, "/") == 0) {
+        } else if (strcmp(arg, "/") == 0) {
             op = '/';
-        }
-        else if (strcmp(arg, "=") == 0) {
+        } else if (strcmp(arg, "=") == 0) {
             op = '=';
-        }
-        else if (strcmp(arg, "<") == 0) {
+        } else if (strcmp(arg, "<") == 0) {
             op = '<';
-        }
-        else if (strcmp(arg, ">") == 0) {
+        } else if (strcmp(arg, ">") == 0) {
             op = '>';
-        }
-        else if (strcmp(arg, "i") == 0) {
+        } else if (strcmp(arg, "i") == 0) {
             op = 'i';
-        }
-        else {
+        } else {
             throw std::string("Wrong operation format!");
         }
-    }
-    else {
-        if (strcmp(arg, "d") == 0) {      // 'd', 'r' '=', '>', '<'
+        // 'd', 'r' '=', '>', '<'
+    } else {
+        if (strcmp(arg, "d") == 0) {     
             op = 'd';
-        }
-        else if (strcmp(arg, "r") == 0) {
+        } else if (strcmp(arg, "r") == 0) {
             op = 'r';
-        }
-        else if (strcmp(arg, "=") == 0) {
+        } else if (strcmp(arg, "=") == 0) {
             op = '=';
-        }
-        else if (strcmp(arg, "<") == 0) {
+        } else if (strcmp(arg, "<") == 0) {
             op = '<';
-        }
-        else if (strcmp(arg, ">") == 0) {
+        } else if (strcmp(arg, ">") == 0) {
             op = '>';
-        }
-        else {
+        } else {
             throw std::string("Wrong operation format!");
         }
     }
@@ -152,8 +134,7 @@ std::string FractionCalculator::operator()(int argc, const char** argv) {
             args.f2_nom = parseInt(argv[3]);
             args.f2_den = parseInt(argv[4]);
             args.operation = parseOperation(argc, argv[5]);
-        }
-        else if (argc == 5) {
+        } else if (argc == 5) {
             args.f1_nom = parseInt(argv[1]);
             args.f1_den = parseInt(argv[2]);
             args.f2_nom = parseInt(argv[3]);
@@ -161,8 +142,7 @@ std::string FractionCalculator::operator()(int argc, const char** argv) {
             args.f2_den = 1;
 
             args.operation = parseOperation(argc, argv[4]);
-        }
-        else if (argc == 4) {
+        } else if (argc == 4) {
             args.f1_nom = parseInt(argv[1]);
             args.f1_den = parseInt(argv[2]);
 
@@ -175,8 +155,6 @@ std::string FractionCalculator::operator()(int argc, const char** argv) {
     catch (std::string& str) {
         return str;
     }
-
-    
         Fraction f1;
         Fraction f2;
 
