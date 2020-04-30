@@ -54,7 +54,7 @@ TEST_F(FractionCalculatorTest, Check_Number_Of_Arguments_2) {
 }
 
 TEST_F(FractionCalculatorTest, Check_Number_Of_Arguments_6) {
-    vector<string> args = { "1", "2","3","4","5","6" };
+    vector<string> args = { "1", "2", "3", "4", "5", "6" };
 
     Act(args);
 
